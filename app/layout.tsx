@@ -1,3 +1,5 @@
+import Footer from "@/components/Footer";
+import SideNavbar from "@/components/SideNavbar";
 import "@/styles/main.scss";
 
 export const metadata = {
@@ -12,7 +14,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <SideNavbar />
+        <main>{children}</main>
+        <Footer />
+      </body>
     </html>
   );
 }

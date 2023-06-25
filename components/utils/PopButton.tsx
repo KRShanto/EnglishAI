@@ -1,16 +1,22 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, ButtonHTMLAttributes } from "react";
+
+type Props = {
+  children: React.ReactNode;
+  className?: string;
+  onClick?: () => void;
+  delay?: number;
+} & ButtonHTMLAttributes<HTMLButtonElement>;
 
 // A button that pops after click
 export default function PopButton({
   children,
+  className,
   onClick,
+  delay = 100,
   ...props
-}: {
-  children: React.ReactNode;
-  onClick?: () => void;
-}) {
+}: Props) {
   // should the button pop?
   const [shouldPop, setShouldPop] = useState(false);
 
@@ -19,18 +25,18 @@ export default function PopButton({
     if (shouldPop) {
       setTimeout(() => {
         setShouldPop(false);
-      }, 100);
+      }, delay);
     }
   }, [shouldPop]);
 
   return (
     <button
-      {...props}
       onClick={() => {
         setShouldPop(true);
         if (onClick) onClick();
       }}
-      className={`pop-btn ${shouldPop ? "pop" : ""}`}
+      className={`pop-btn ${shouldPop ? "pop" : ""} ${className || ""}`}
+      {...props}
     >
       {children}
     </button>

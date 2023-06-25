@@ -1,0 +1,119 @@
+.loading {
+  width: 22rem;
+  height: 22rem;
+  margin: 0 auto;
+  position: relative;
+  bottom: 5rem;
+}
+
+.checking-result {
+  .heading {
+    font-family: sans-serif;
+    @include mainGradient();
+    font-size: 1.8rem;
+    width: 50rem;
+    margin: 0 auto;
+    position: relative;
+
+    &:before,
+    &:after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      width: 42%;
+      height: 2px;
+      background: rgb(0, 153, 255);
+    }
+
+    &:before {
+      left: 0;
+    }
+
+    &:after {
+      right: 0;
+    }
+  }
+
+  .success {
+    @include mainGradient(rgb(88, 251, 0), rgb(3, 157, 44));
+    margin-top: 2rem;
+    font-size: 2.5rem;
+    text-align: center;
+    font-family: sans-serif;
+  }
+
+  .sentence {
+    width: 60%;
+    margin: 2rem auto;
+    padding: 1rem;
+    font-size: 1.3rem;
+    font-family: sans-serif;
+    border-radius: 0.5rem;
+    color: rgba(245, 245, 245, 0.859);
+
+    .title {
+      font-size: 1rem;
+      font-weight: bold;
+    }
+
+    .text {
+      .wrong-text {
+        color: red;
+        font-weight: bold;
+      }
+    }
+
+    .icon {
+      border-radius: 50%;
+      width: 4rem;
+      height: 4rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease-in-out;
+      cursor: pointer;
+
+      &:hover {
+        background-color: rgba(255, 255, 255, 0.171);
+      }
+    }
+
+    .text_icon {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+  }
+
+  .correct {
+    background: rgba(89, 255, 0, 0.315);
+    border: 5px solid green;
+
+    .title {
+      color: greenyellow;
+    }
+  }
+
+  .wrong {
+    background: rgba(255, 0, 60, 0.374);
+    border: 5px solid rgba(255, 0, 55, 0.475);
+
+    .title {
+      color: red;
+    }
+  }
+
+  .description {
+    font-size: 1.5rem;
+    font-weight: normal;
+    margin: 5rem auto;
+    position: relative;
+    left: 2rem;
+
+    .text {
+      margin: 2rem 0;
+      text-align: start;
+      list-style-position: inside;
+    }
+  }
+}

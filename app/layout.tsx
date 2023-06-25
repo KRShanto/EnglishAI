@@ -1,6 +1,6 @@
 import Footer from "@/components/Footer";
 import SideNavbar from "@/components/SideNavbar";
-import "@/styles/main.scss";
+import "../styles/main.scss";
 
 export const metadata = {
   title: "English AI",
@@ -16,7 +16,7 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <SideNavbar />
-        <main>{children}</main>
+        <main id="main">{children}</main>
         <Footer />
       </body>
     </html>

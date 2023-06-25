@@ -6,6 +6,6 @@ interface GrammarInputState {
 }
 
 export const useGrammarInput = create<GrammarInputState>((set) => ({
-  input: "",
+  input: "Shanto is my name",
   setInput: (input) => set({ input }),
 }));

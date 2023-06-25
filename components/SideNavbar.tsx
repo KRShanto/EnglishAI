@@ -1,16 +1,18 @@
+"use client";
+
 import Link from "next/link";
 import React from "react";
-import { Poppins, Roboto_Slab } from "next/font/google";
-
-const logoFont = Poppins({ weight: "700", subsets: ["latin"] });
-const linkFont = Roboto_Slab({ weight: "700", subsets: ["latin"] });
+import { useSelectedLayoutSegment } from "next/navigation";
+import { logoFont, linkFont } from "./consts";
 
 export default function SideNavbar() {
+  const segment = useSelectedLayoutSegment();
+
   const links = [
     [
       { href: "/grammar", text: "Grammar" },
       { href: "/writing", text: "Writing" },
-      { href: "/write-together", text: "White Together" },
+      { href: "/write-together", text: "Write Together" },
     ],
     [
       { href: "/about", text: "About" },
@@ -25,40 +27,29 @@ export default function SideNavbar() {
         English AI
       </Link>
 
+      <hr />
+
       <div className="links">
-        {/* <div className="link-section top">
-          <Link href="/grammar" style={linkFont.style}>
-            Grammar
-          </Link>
-          <Link href="/writing" style={linkFont.style}>
-            Writing
-          </Link>
-          <Link href="/white-together" style={linkFont.style}>
-            White Together
-          </Link>
-        </div>
-
-        <hr />
-
-        <div className="link-section bottom">
-          <Link href="/about" style={linkFont.style}>
-            About
-          </Link>
-          <Link href="/settings" style={linkFont.style}>
-            Settings
-          </Link>
-          <Link href="/profile" style={linkFont.style}>
-            Profile
-          </Link>
-        </div> */}
-
         {links.map((section, i) => (
-          <div key={i} className={`link-section ${i === 0 ? "top" : "bottom"}`}>
-            {section.map((link, i) => (
-              <Link key={i} href={link.href} style={linkFont.style}>
-                {link.text}
-              </Link>
-            ))}
+          <div key={i}>
+            <div className={`link-section ${i === 0 ? "top" : "bottom"}`}>
+              {section.map((link, i) => (
+                <Link
+                  key={i}
+                  href={link.href}
+                  style={linkFont.style}
+                  className={`${
+                    segment && segment === link.href.split("/")[1]
+                      ? "active"
+                      : ""
+                  }`}
+                >
+                  {link.text}
+                </Link>
+              ))}
+            </div>
+
+            {i === 0 && <hr />}
           </div>
         ))}
       </div>

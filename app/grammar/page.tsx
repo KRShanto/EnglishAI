@@ -1,6 +1,9 @@
-import Grammar from "@/components/gammar/Grammar";
-import React from "react";
+import Description from "@/components/gammar/Description";
 
 export default function Page() {
-  return <Grammar />;
+  return (
+    <>
+      <Description />
+    </>
+  );
 }

@@ -1,0 +1,13 @@
+@mixin logoColor() {
+  background: linear-gradient(45deg, rgb(242, 255, 0), rgb(255, 72, 0));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+@mixin mainGradient($color1: rgb(0, 234, 255), $color2: rgb(4, 0, 255)) {
+  background: linear-gradient(45deg, $color1, $color2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}

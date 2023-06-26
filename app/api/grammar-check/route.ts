@@ -18,121 +18,36 @@ export async function POST(request: Request) {
     );
   }
 
-  const prompt = `You have to correct the sentence I am going to give,
-I am building an english checking site and I am giving you a type and some examples. You just have to response corresponding to the examples and type. The result should be a valid json object. You have to use signle quote inside description strings. You can use the examples below to understand the format.
-type:
-{
-  text: string;
-  result: {
-    isCorrect: boolean;
-    correctText: string;
-    wrongText: {
-      text: string;
-      wrong: boolean;
-    }[];
-    description: string[];
-  };
-}
+  const prompt = `You have to correct the sentence I am going to give,\n I am building an english checking site and I am giving you a type and some examples. You just have to response corresponding to the examples and type. The result should be a valid json object. You have to use signle quote inside description strings. You can use the examples below to understand the format.\n type:\n {\n text: string;\n result: {\n isCorrect: boolean;\n correctText: string;\n wrongText: {\n text: string;\n wrong: boolean;\n }[];\n description: string[];\n };\n }\n\n example1:\n {\n"text":"My name shanto is and I wants to play",\n "result": {\n "isCorrect": false,\n "correctText": "My name is Shanto and I want to play",\n "wrongText": [\n {\n "text":"My name",\n "wrong": false\n },\n {\n "text": "shanto is",\n "wrong": true\n },\n {\n "text": "and I",\n "wrong": false\n },\n {\n "text": "wants",\n "wrong": true\n },\n {\n "text": "to play",\n "wrong": false\n }\n ],\n "description": [\n "Missing capitalization: The name 'shanto' should begin with a capital letter since it appears to be a proper noun.",\n "Subject-verb agreement: The verb 'is' is incorrectly placed after the name, rather than before it. It should be 'My name is Shanto' instead.",\n "Verb tense: The verb 'wants' should be changed to the present tense to match the subject 'I.' It should be 'I want' instead."\n ]\n }\n }\n\n example2:\n {\n "text": "Ruhi go outside to play football yesterday",\n "result": {\n "isCorrect": false,\n "correctText": "Ruhi went outside to play football yesterday",\n "wrongText": [\n {\n "text": "Ruhi",\n "wrong": false\n },\n {\n "text": "go",\n "wrong": true\n },\n{\n "text": "outside to play football yesterday",\n "wrong": false\n }\n ],\n "description": [\n "Verb tense: The verb 'go' should be changed to the past tense to match the adverb 'yesterday.' It should be 'went' instead."\n ]\n }\n }\n\n\n example3:\n {\n "text": "I am going to school",\n "result": {\n "isCorrect": true,\n "correctText": "",\n "wrongText": [],\n "description": []\n  }\n }\n\n The text is: ${text}`;
 
-example1:
-{
-  "text": "My name shanto is and I wants to play",
-  "result": {
-    "isCorrect": false,
-    "correctText": "My name is Shanto and I want to play",
-    "wrongText": [
-      {
-        "text": "My name",
-        "wrong": false
-      },
-      {
-        "text": "shanto is",
-        "wrong": true
-      },
-      {
-        "text": "and I",
-        "wrong": false
-      },
-      {
-        "text": "wants",
-        "wrong": true
-      },
-      {
-        "text": "to play",
-        "wrong": false
-      }
-    ],
-    "description": [
-      "Missing capitalization: The name 'shanto' should begin with a capital letter since it appears to be a proper noun.",
-      "Subject-verb agreement: The verb 'is' is incorrectly placed after the name, rather than before it. It should be 'My name is Shanto' instead.",
-      "Verb tense: The verb 'wants' should be changed to the present tense to match the subject 'I.' It should be 'I want' instead."
-    ]
+  const openAIfetch = process.env.OPENAI_FETCH || "false";
+  let response;
+
+  if (openAIfetch === "true") {
+    const openAiResponse = await openai.createCompletion({
+      model: "text-davinci-003",
+      prompt,
+      temperature: 0,
+      max_tokens: 2000,
+      top_p: 1.0,
+      frequency_penalty: 0.0,
+      presence_penalty: 0.0,
+    });
+
+    response = JSON.parse(openAiResponse.data.choices[0].text || "{}");
+  } else {
+    const result = `{
+    "text": "I am going to school",
+    "result": {
+      "isCorrect": true,
+      "correctText": "",
+      "wrongText": [],
+      "description": []
+    }
+  }`;
+
+    response = JSON.parse(result);
   }
-}
 
-example2:
-{
-  "text": "Ruhi go outside to play football yesterday",
-  "result": {
-    "isCorrect": false,
-    "correctText": "Ruhi went outside to play football yesterday",
-    "wrongText": [
-      {
-        "text": "Ruhi",
-        "wrong": false
-      },
-      {
-        "text": "go",
-        "wrong": true
-      },
-      {
-        "text": "outside to play football yesterday",
-        "wrong": false
-      }
-    ],
-    "description": [
-      "Verb tense: The verb 'go' should be changed to the past tense to match the adverb 'yesterday.' It should be 'went' instead."
-    ]
-  }
-}
-
-
-example3:
-{
-  "text": "I am going to school",
-  "result": {
-    "isCorrect": true,
-    "correctText": "",
-    "wrongText": [],
-    "description": []
-  }
-}
-
-The text is: ${text}}`;
-
-  // const response = await openai.createCompletion({
-  //   model: "text-davinci-003",
-  //   prompt,
-  //   temperature: 0,
-  //   max_tokens: 2000,
-  //   top_p: 1.0,
-  //   frequency_penalty: 0.0,
-  //   presence_penalty: 0.0,
-  // });
-
-  // console.log(response.data.choices[0].text);
-
-  // return NextResponse.json(JSON.parse(response.data.choices[0].text || "{}"));
-
-  const result = `{
-  "text": "I am going to school",
-  "result": {
-    "isCorrect": true,
-    "correctText": "",
-    "wrongText": [],
-    "description": []
-  }
-}`;
-
-  return NextResponse.json(JSON.parse(result));
+  return NextResponse.json(response);
 }

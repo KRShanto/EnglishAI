@@ -14,13 +14,13 @@ export default function Options() {
   const { check } = useGrammarChecker();
 
   function checkGrammar() {
-    // fetch server
-    check(input);
-
     // if the page is not "check", change it to "check"
     if (segment !== "check") {
       router.push("/grammar/check");
     }
+
+    // fetch server
+    check(input);
   }
 
   return (

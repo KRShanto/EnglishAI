@@ -38,7 +38,7 @@ export async function POST(request: Request) {
     response = JSON.parse(openAiResponse.data.choices[0].text || "{}");
   } else {
     const result = `{
-    "text": "I am going to school",
+    "text": "${text}",
     "result": {
       "isCorrect": true,
       "correctText": "",

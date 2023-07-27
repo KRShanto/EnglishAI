@@ -1,6 +1,3 @@
-import Writing from "@/components/writing/Writing";
-import React from "react";
-
 export default function Page() {
-  return <Writing />;
+  return <h1>Generate your composition, letter, dialogue, paragraph etc.</h1>;
 }

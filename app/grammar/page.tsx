@@ -1,9 +1,11 @@
-import Description from "@/components/gammar/Description";
-
 export default function Page() {
   return (
-    <>
-      <Description />
-    </>
+    <div className="description">
+      <p>Check your grammar with our AI-powered grammar checker.</p>
+      <p>
+        You can check your grammar, improve your writing, and get feedback on
+        your writing.
+      </p>
+    </div>
   );
 }

@@ -1,6 +1,3 @@
-import Settings from "@/components/Settings";
-import React from "react";
-
 export default function Page() {
-  return <Settings />;
+  return <h1>Settings Page</h1>;
 }

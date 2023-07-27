@@ -1,6 +1,3 @@
-import About from "@/components/About";
-import React from "react";
-
 export default function Page() {
-  return <About />;
+  return <h1>About the English AI</h1>;
 }

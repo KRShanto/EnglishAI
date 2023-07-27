@@ -1,7 +1,7 @@
-import Heading from "@/components/gammar/Heading";
-import Input from "@/components/gammar/Input";
-import Options from "@/components/gammar/Options";
-import Scrollers from "@/components/gammar/Scrollers";
+import Heading from "./Heading";
+import Input from "./Input";
+import Options from "./Options";
+import Scrollers from "./Scrollers";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (

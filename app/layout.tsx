@@ -1,5 +1,5 @@
-import Footer from "@/components/Footer";
-import SideNavbar from "@/components/SideNavbar";
+import Footer from "./Footer";
+import SideNavbar from "@/app/SideNavbar";
 import "../styles/main.scss";
 
 export const metadata = {

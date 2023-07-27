@@ -1,6 +1,3 @@
-import Profile from "@/components/Profile";
-import React from "react";
-
 export default function Page() {
-  return <Profile />;
+  return <h1>Customize your profile</h1>;
 }

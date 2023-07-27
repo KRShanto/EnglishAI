@@ -3,7 +3,7 @@
 import Link from "next/link";
 import React from "react";
 import { useSelectedLayoutSegment } from "next/navigation";
-import { logoFont, linkFont } from "./consts";
+import { logoFont, linkFont } from "../lib/consts";
 
 export default function SideNavbar() {
   const segment = useSelectedLayoutSegment();

@@ -1,7 +1,6 @@
 "use client";
 
 import React from "react";
-import PopButton from "../utils/PopButton";
 import { FiArrowDown, FiArrowUp } from "react-icons/fi";
 
 export default function Scrollers() {
@@ -23,13 +22,13 @@ export default function Scrollers() {
 
   return (
     <div className="scroller">
-      <PopButton delay={200} onClick={scrollUp}>
+      <button onClick={scrollUp}>
         <FiArrowUp />
-      </PopButton>
+      </button>
 
-      <PopButton delay={200} onClick={scrollDown}>
+      <button onClick={scrollDown}>
         <FiArrowDown />
-      </PopButton>
+      </button>
     </div>
   );
 }

@@ -1,3 +1,5 @@
+"use client";
+
 import DoneAnimation from "@/public/done.json";
 import Lottie from "lottie-react";
 import { useEffect, useState } from "react";

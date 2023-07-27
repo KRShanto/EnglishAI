@@ -1,11 +1,10 @@
 "use client";
 
-import PopButton from "../utils/PopButton";
-import PopLink from "../utils/PopLink";
 import { useSelectedLayoutSegment } from "next/navigation";
 import { useGrammarInput } from "@/stores/grammar-input";
 import { useRouter } from "next/navigation";
 import { useGrammarChecker } from "@/stores/grammar-check";
+import Link from "next/link";
 
 export default function Options() {
   const segment = useSelectedLayoutSegment();
@@ -26,15 +25,15 @@ export default function Options() {
   return (
     <>
       <div className="options">
-        <PopButton className="option" onClick={checkGrammar}>
+        <button className="option" onClick={checkGrammar}>
           Check your grammar
-        </PopButton>
-        <PopLink className="option" href="/grammar/improve">
+        </button>
+        <Link className="option" href="/grammar/improve">
           Improve your grammar
-        </PopLink>
-        <PopLink className="option" href="/grammar/alternative">
+        </Link>
+        <Link className="option" href="/grammar/alternative">
           Alternative sentences
-        </PopLink>
+        </Link>
       </div>
     </>
   );

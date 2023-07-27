@@ -14,14 +14,6 @@ const inter = Roboto({
 export default function Checker() {
   const { isChecking, currentResult } = useGrammarChecker();
 
-  if (!currentResult)
-    return (
-      <p className="description">
-        Enter a sentence in the input box above and click the button again to
-        check it.
-      </p>
-    );
-
   if (isChecking)
     return (
       <Lottie
@@ -30,6 +22,14 @@ export default function Checker() {
         loop
         autoplay
       />
+    );
+
+  if (!currentResult)
+    return (
+      <p className="description">
+        Enter a sentence in the input box above and click the button again to
+        check it.
+      </p>
     );
 
   return (

@@ -5,3 +5,4 @@ const configuration = new Configuration({
 });
 
 export const openAI = new OpenAIApi(configuration);
+export const openAIfetch = process.env.OPENAI_FETCH || "false";

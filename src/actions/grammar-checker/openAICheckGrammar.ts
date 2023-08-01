@@ -1,18 +1,14 @@
 "use server";
 
 import { openAI } from "@/lib/openAi";
-import {
-  ChatCompletionFunctions,
-  ChatCompletionRequestMessageRoleEnum,
-} from "openai";
 import { functions } from "./functions";
 import { getMessages } from "./messages";
+import { openAIfetch } from "@/lib/openAi";
 
 // A server action to check the grammar of the text using openAI API
 // TODO: handle text length
 export async function openAICheckGrammar(text: string) {
   const messages = getMessages(text);
-  const openAIfetch = process.env.OPENAI_FETCH || "false";
 
   let response;
 

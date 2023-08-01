@@ -4,17 +4,11 @@ import { useGrammarChecker } from "@/stores/grammar-check";
 import Lottie from "lottie-react";
 import LoadingAnimation from "@/../public/loading.json";
 import CopyBtn from "@/components/CopyBtn";
-import { Roboto } from "next/font/google";
-
-const inter = Roboto({
-  subsets: ["latin-ext"],
-  weight: "400",
-});
 
 export default function Page() {
-  const { isChecking, currentResult } = useGrammarChecker();
+  const { isFetching, currentResult } = useGrammarChecker();
 
-  if (isChecking)
+  if (isFetching)
     return (
       <Lottie
         animationData={LoadingAnimation}
@@ -75,14 +69,6 @@ export default function Page() {
               />
             </div>
           </div>
-
-          {/* <ol className="description">
-            {currentResult.result.description.map((text, index) => (
-              <li className="text" key={index} style={inter.style}>
-                {text}
-              </li>
-            ))}
-          </ol> */}
         </>
       )}
     </div>

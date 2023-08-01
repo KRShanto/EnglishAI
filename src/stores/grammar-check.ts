@@ -7,7 +7,7 @@ interface GrammarChecker {
   // The current result the user is checking
   currentResult: GrammarCheckerResult | null;
   // Whether the user is checking or not
-  isChecking: boolean;
+  isFetching: boolean;
   // Check the text
   check: (text: string) => void;
 }
@@ -18,7 +18,7 @@ export const useGrammarChecker = create<GrammarChecker>((set, get) => ({
   // The current result the user is checking
   currentResult: null,
   // Whether the user is checking or not
-  isChecking: false,
+  isFetching: false,
   // Check the text
   check: async (text: string) => {
     // if the text is empty then return
@@ -50,23 +50,17 @@ export const useGrammarChecker = create<GrammarChecker>((set, get) => ({
 
     // if the text is not checked then check it
 
-    // turn on the isChecking flag to show the loading indicator
-    set((state) => ({ ...state, isChecking: true }));
+    // turn on the isFetching flag to show the loading indicator
+    set((state) => ({ ...state, isFetching: true }));
 
-    // const res = await fetch("/api/grammar-check", {
-    //   method: "POST",
-    //   body: JSON.stringify({ text }),
-    // });
-
-    // const data = await res.json();
-
+    // check the text
     const data = await openAICheckGrammar(text);
 
     set((state) => ({
       ...state,
       results: [...state.results, data],
       currentResult: data,
-      isChecking: false,
+      isFetching: false,
     }));
   },
 }));

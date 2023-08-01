@@ -27,8 +27,7 @@ export default function Page() {
   if (!currentResult)
     return (
       <p className="description">
-        Enter a sentence in the input box above and click the button again to
-        check it.
+        Enter a sentence in the input box above and click any of the buttons.
       </p>
     );
 
@@ -77,13 +76,13 @@ export default function Page() {
             </div>
           </div>
 
-          <ol className="description">
+          {/* <ol className="description">
             {currentResult.result.description.map((text, index) => (
               <li className="text" key={index} style={inter.style}>
                 {text}
               </li>
             ))}
-          </ol>
+          </ol> */}
         </>
       )}
     </div>

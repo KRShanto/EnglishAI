@@ -1,3 +1,4 @@
+import { openAICheckGrammar } from "@/actions/grammar-checker/openAICheckGrammar";
 import { create } from "zustand";
 
 interface GrammarChecker {
@@ -52,12 +53,14 @@ export const useGrammarChecker = create<GrammarChecker>((set, get) => ({
     // turn on the isChecking flag to show the loading indicator
     set((state) => ({ ...state, isChecking: true }));
 
-    const res = await fetch("/api/grammar-check", {
-      method: "POST",
-      body: JSON.stringify({ text }),
-    });
+    // const res = await fetch("/api/grammar-check", {
+    //   method: "POST",
+    //   body: JSON.stringify({ text }),
+    // });
 
-    const data = await res.json();
+    // const data = await res.json();
+
+    const data = await openAICheckGrammar(text);
 
     set((state) => ({
       ...state,

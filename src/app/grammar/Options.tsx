@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import { useGrammarChecker } from "@/stores/grammar-check";
 import Link from "next/link";
 import { useGrammarImprover } from "@/stores/grammar-improve";
+import { useGrammarAlternative } from "@/stores/grammar-alternative";
 
 export default function Options() {
   const segment = useSelectedLayoutSegment();
@@ -13,6 +14,7 @@ export default function Options() {
   const { input } = useGrammarInput();
   const { check } = useGrammarChecker();
   const { improve } = useGrammarImprover();
+  const { alternate } = useGrammarAlternative();
 
   function checkGrammar() {
     // if the page is not "check", change it to "check"
@@ -34,6 +36,16 @@ export default function Options() {
     improve(input);
   }
 
+  function alternativeGrammar() {
+    // if the page is not "alternative", change it to "alternative"
+    if (segment !== "alternative") {
+      router.push("/grammar/alternative");
+    }
+
+    // fetch server
+    alternate(input);
+  }
+
   return (
     <>
       <div className="options">
@@ -43,9 +55,9 @@ export default function Options() {
         <button className="option" onClick={improveGrammar}>
           Improve your grammar
         </button>
-        <Link className="option" href="/grammar/alternative">
+        <button className="option" onClick={alternativeGrammar}>
           Alternative sentences
-        </Link>
+        </button>
       </div>
     </>
   );

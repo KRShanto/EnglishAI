@@ -2,22 +2,22 @@ import { openAICheckGrammar } from "@/actions/grammar-checker/openAICheckGrammar
 import { create } from "zustand";
 
 interface GrammarChecker {
-  // Collection of all results the user has checked in the session
+  // Collection of all results the user has fetched in the session
   results: GrammarCheckerResult[];
-  // The current result the user is checking
+  // The current result the user is fetching
   currentResult: GrammarCheckerResult | null;
-  // Whether the user is checking or not
+  // Whether the user is fetching or not
   isFetching: boolean;
   // Check the text
   check: (text: string) => void;
 }
 
 export const useGrammarChecker = create<GrammarChecker>((set, get) => ({
-  // Collection of all results the user has checked in the session
+  // Collection of all results the user has fetched in the session
   results: [],
-  // The current result the user is checking
+  // The current result the user is fetching
   currentResult: null,
-  // Whether the user is checking or not
+  // Whether the user is fetching or not
   isFetching: false,
   // Check the text
   check: async (text: string) => {

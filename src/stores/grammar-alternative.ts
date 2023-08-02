@@ -1,19 +1,18 @@
-import { openAICheckGrammar } from "@/actions/grammar-checker/openAICheckGrammar";
-import { openAIImproveGrammar } from "@/actions/grammar-improver/openAIImproveGrammar";
+import { openAIAlternativeGrammar } from "@/actions/grammar-alternative/openAIAlternativeGrammar";
 import { create } from "zustand";
 
-interface GrammarImprover {
+interface GrammarAlternative {
   // Collection of all results the user has fetched in the session
-  results: GrammarImproverResult[];
-  // The current result the user is fetched
-  currentResult: GrammarImproverResult | null;
+  results: GrammarAlternativeResult[];
+  // The current result the user is fetching
+  currentResult: GrammarAlternativeResult | null;
   // Whether the user is fetching or not
   isFetching: boolean;
   // Improve the text
-  improve: (text: string) => void;
+  alternate: (text: string) => void;
 }
 
-export const useGrammarImprover = create<GrammarImprover>((set, get) => ({
+export const useGrammarAlternative = create<GrammarAlternative>((set, get) => ({
   // Collection of all results the user has fetched in the session
   results: [],
   // The current result the user is fetching
@@ -21,7 +20,7 @@ export const useGrammarImprover = create<GrammarImprover>((set, get) => ({
   // Whether the user is fetching or not
   isFetching: false,
   // Improve the text
-  improve: async (text: string) => {
+  alternate: async (text: string) => {
     // if the text is empty, return
     if (text === "") {
       set((state) => ({
@@ -39,7 +38,7 @@ export const useGrammarImprover = create<GrammarImprover>((set, get) => ({
     }
 
     // whether the text is already improved or not
-    let isAlreadyImproved = false;
+    let isAlreadyAlternated = false;
 
     // loop through all the results to check if the text is already improved
     for (const result of results) {
@@ -50,13 +49,13 @@ export const useGrammarImprover = create<GrammarImprover>((set, get) => ({
           currentResult: result,
         }));
         // now break the loop and return
-        isAlreadyImproved = true;
+        isAlreadyAlternated = true;
         break;
       }
     }
 
     // if the text is already improved, return
-    if (isAlreadyImproved) return;
+    if (isAlreadyAlternated) return;
 
     // Now improve the text
 
@@ -67,7 +66,7 @@ export const useGrammarImprover = create<GrammarImprover>((set, get) => ({
     }));
 
     // improve the text
-    const data = await openAIImproveGrammar(text);
+    const data = await openAIAlternativeGrammar(text);
 
     set((state) => ({
       ...state,

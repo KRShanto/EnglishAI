@@ -14,7 +14,7 @@ export async function openAICheckGrammar(text: string) {
 
   if (openAIfetch === "true") {
     const completion = await openAI.createChatCompletion({
-      model: "gpt-3.5-turbo",
+      model: "gpt-3.5-turbo-1106",
       messages,
       functions,
       function_call: { name: "check_grammar" },

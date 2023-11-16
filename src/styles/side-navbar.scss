@@ -5,7 +5,7 @@
   background-color: rgb(0, 14, 45);
 
   hr {
-    border: 1px solid rgba(255, 255, 255, 0.484);
+    border: 1px solid #ffffff7b;
     margin: 0 2rem;
   }
 
@@ -22,19 +22,18 @@
     .link-section {
       display: flex;
       flex-direction: column;
-      padding: 2rem 3rem;
+      padding: 1rem 2rem;
 
       a {
         text-decoration: none;
         color: rgba(255, 255, 255, 0.769);
         font-size: 1.5rem;
         font-weight: 500;
-        transition: all 0.3s ease-in-out;
+        transition: all 0.2s ease-in-out;
         font-family: sans-serif;
         font-weight: bold;
         padding: 1rem;
         border-radius: 0.5rem;
-        transition: all 0.3s ease-in-out;
 
         &:hover {
           background-color: rgba(255, 255, 255, 0.1);
@@ -42,7 +41,8 @@
       }
 
       a.active {
-        @include mainGradient();
+        background-color: rgba(255, 255, 255, 0.1);
+        color: white;
       }
     }
   }

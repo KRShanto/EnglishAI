@@ -1,0 +1,239 @@
+.form-style {
+  //   border: 1px solid red;s
+  margin: 0 auto;
+  width: 40rem;
+  padding: 1rem;
+  border-radius: 1rem;
+
+  .title {
+    font-size: 2.3rem;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 2rem;
+    font-family: var(--logo-font);
+    @include mainGradient();
+  }
+
+  .wrap-upper {
+    // border: 2px solid green;
+    // margin-bottom: 0.5rem;
+    height: 6rem;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease-in-out;
+  }
+
+  .wrap-upper.focused {
+    height: 8rem;
+  }
+
+  .error {
+    font-size: 1.1rem;
+    color: red;
+    position: absolute;
+    bottom: 0rem;
+    left: 0.5rem;
+  }
+
+  .wrap {
+    position: absolute;
+    bottom: 1.8rem;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    // border: 1px solid red;
+  }
+
+  label {
+    font-size: 1.3rem;
+    font-weight: 500;
+    color: rgb(0, 149, 255);
+    font-family: var(--roboto-slab);
+    white-space: nowrap;
+    position: absolute;
+  }
+
+  label.bottom {
+    top: 50%;
+    transform: translateY(-50%);
+    left: 1rem;
+  }
+
+  label.to-right {
+    animation: toRight 0.5s ease-in-out;
+  }
+
+  label.to-left {
+    animation: toLeft 0.5s ease-in-out forwards;
+  }
+
+  label.from-left {
+    top: -2.3rem;
+    left: -5rem;
+    animation: fromLeft 0.5s ease-in-out forwards;
+  }
+
+  label.from-right {
+    top: -2.3rem;
+    animation: fromRight 0.5s ease-in-out forwards;
+  }
+
+  input {
+    font-size: 1.3rem;
+    padding: 0.8rem;
+    border-radius: 0.3rem;
+    outline: none;
+    // border: 1px solid rgb(0, 149, 255);
+    border: none;
+    font-family: sans-serif;
+    background-color: rgba(36, 44, 56, 0.992);
+    color: white;
+  }
+
+  input.focused {
+    border: 1px solid rgb(0, 149, 255);
+  }
+
+  button[type="submit"] {
+    font-size: 1.2rem;
+    font-weight: bold;
+    border-radius: 0.3rem;
+    outline: none;
+    border: none;
+    font-family: sans-serif;
+    background-color: rgb(0, 110, 188);
+    color: white;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    transform: scale(1);
+    width: 100%;
+    margin-top: 2rem;
+    height: 3.5rem;
+
+    &:hover {
+      background-color: rgba(0, 149, 255, 0.636);
+    }
+
+    &:active {
+      background-color: rgb(0, 149, 255, 0.6);
+      transform: scale(0.95);
+    }
+  }
+
+  .links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 1.5rem;
+    gap: 0.3rem;
+
+    .link {
+      font-family: var(--roboto-slab);
+      font-size: 1.3rem;
+      color: rgba(0, 186, 238, 0.87);
+      text-decoration: none;
+    }
+  }
+
+  .global-error-upper {
+    overflow: hidden;
+  }
+
+  .global-error {
+    background-color: rgba(255, 0, 0, 0.5);
+    color: white;
+    padding: 1rem;
+    border-radius: 0.3rem;
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    right: 100%;
+    animation: globalError 0.5s ease-in-out forwards;
+
+    .message {
+      font-size: 1.2rem;
+      font-family: var(--roboto-slab);
+      color: rgba(255, 255, 255, 0.926);
+    }
+
+    .close {
+      cursor: pointer;
+      font-size: 1.2rem;
+      border-radius: 50%;
+      width: 2rem;
+      height: 2rem;
+      border: none;
+      outline: none;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: rgba(0, 0, 0, 0.294);
+      color: rgb(255, 252, 252);
+      transform: scale(1);
+
+      &:hover {
+        background-color: rgba(0, 0, 0, 0.5);
+      }
+
+      &:active {
+        transform: scale(0.95);
+      }
+    }
+  }
+}
+
+@keyframes toRight {
+  0% {
+    left: 1rem;
+    opacity: 1;
+  }
+  100% {
+    left: 100%;
+    opacity: 0;
+  }
+}
+
+@keyframes fromLeft {
+  0% {
+    left: -5rem;
+    opacity: 0;
+  }
+  100% {
+    left: 0;
+    opacity: 1;
+  }
+}
+
+@keyframes toLeft {
+  0% {
+    left: 100%;
+    opacity: 0;
+  }
+  100% {
+    left: 1rem;
+    opacity: 1;
+  }
+}
+
+@keyframes fromRight {
+  0% {
+    left: 0;
+    opacity: 1;
+  }
+  100% {
+    left: -5rem;
+    opacity: 0;
+  }
+}
+
+@keyframes globalError {
+  0% {
+    right: 100%;
+    opacity: 0;
+  }
+  100% {
+    right: 0;
+    opacity: 1;
+  }
+}

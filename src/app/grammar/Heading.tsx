@@ -1,5 +1,7 @@
-import { logoFont } from "../../lib/consts";
-
 export default function Heading() {
-  return <h1 className={`heading ${logoFont.className}`}>Grammar Checker</h1>;
+  return (
+    <div className="heading-div">
+      <h1 className="heading">Grammar Checker</h1>
+    </div>
+  );
 }

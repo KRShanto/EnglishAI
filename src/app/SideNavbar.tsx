@@ -3,7 +3,6 @@
 import Link from "next/link";
 import React from "react";
 import { useSelectedLayoutSegment } from "next/navigation";
-import { logoFont, linkFont } from "../lib/consts";
 
 export default function SideNavbar() {
   const segment = useSelectedLayoutSegment();
@@ -23,7 +22,7 @@ export default function SideNavbar() {
 
   return (
     <nav className="side-navbar">
-      <Link href="/" className={`logo ${logoFont.className}`}>
+      <Link href="/" className="logo">
         English AI
       </Link>
 
@@ -37,7 +36,6 @@ export default function SideNavbar() {
                 <Link
                   key={i}
                   href={link.href}
-                  style={linkFont.style}
                   className={`${
                     segment && segment === link.href.split("/")[1]
                       ? "active"

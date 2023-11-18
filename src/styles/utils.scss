@@ -5,7 +5,7 @@
   background-clip: text;
 }
 
-@mixin mainGradient($color1: rgb(0, 234, 255), $color2: rgb(4, 0, 255)) {
+@mixin mainGradient($color1: rgb(0, 191, 255), $color2: rgb(0, 89, 255)) {
   background: linear-gradient(45deg, $color1, $color2);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;

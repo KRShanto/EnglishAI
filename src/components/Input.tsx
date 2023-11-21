@@ -1,6 +1,6 @@
 "use client";
 
-import { useFormErrorStore } from "@/stores/formError";
+import { useFormErrorStore } from "@/stores/form-error";
 import { useState, useRef } from "react";
 
 export default function Input({

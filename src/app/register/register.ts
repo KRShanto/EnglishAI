@@ -5,8 +5,8 @@ import bcrypt from "bcrypt";
 import { nanoid } from "nanoid";
 import slugify from "slugify";
 import * as EmailValidator from "email-validator";
-
-const MIN_PASSWORD_LENGTH = 6;
+import { FormErrorType } from "@/types/form-errror";
+import { MIN_PASSWORD_LENGTH } from "@/lib/consts";
 
 interface RegisterData {
   name: string;
@@ -17,10 +17,7 @@ interface RegisterData {
 
 interface Response {
   success?: boolean;
-  error?: {
-    message: string;
-    field: string;
-  };
+  error?: FormErrorType;
 }
 
 export async function register({

@@ -1,19 +1,14 @@
+import { FormErrorType } from "@/types/form-errror";
 import { create } from "zustand";
 
 interface FormErrorState {
-  error: {
-    message: string;
-    field: "all" | string;
-  } | null;
-  showError: (error: { message: string; field: string } | null) => void;
+  error: FormErrorType | null;
+  showError: (error: FormErrorType | null) => void;
   clearError: () => void;
 }
 
 export const useFormErrorStore = create<FormErrorState>((set) => ({
-  error: {
-    message: "alsdk jfalsdkjf alsdkjfalsd kfjasdlf",
-    field: "all",
-  },
+  error: null,
   showError: (error) => set({ error }),
   clearError: () => set({ error: null }),
 }));

@@ -4,6 +4,7 @@
   width: 40rem;
   padding: 1rem;
   border-radius: 1rem;
+  transition: all 0.3s ease-in-out;
 
   .title {
     font-size: 2.3rem;
@@ -86,7 +87,7 @@
     // border: 1px solid rgb(0, 149, 255);
     border: none;
     font-family: sans-serif;
-    background-color: rgba(36, 44, 56, 0.992);
+    background-color: rgba(22, 37, 60, 0.992);
     color: white;
   }
 
@@ -132,6 +133,15 @@
       font-size: 1.3rem;
       color: rgba(0, 186, 238, 0.87);
       text-decoration: none;
+      background-color: transparent;
+      border: none;
+      outline: none;
+      cursor: pointer;
+      transition: all 0.2s ease-in-out;
+
+      &:hover {
+        color: rgba(0, 149, 255, 0.87);
+      }
     }
   }
 
@@ -149,7 +159,6 @@
     justify-content: space-between;
     position: relative;
     right: 100%;
-    animation: globalError 0.5s ease-in-out forwards;
 
     .message {
       font-size: 1.2rem;
@@ -180,6 +189,14 @@
         transform: scale(0.95);
       }
     }
+  }
+
+  .global-error.display {
+    animation: globalErrorShow 0.5s ease-in-out forwards;
+  }
+
+  .global-error.hide {
+    animation: globalErrorHide 0.5s ease-in-out forwards;
   }
 }
 
@@ -227,7 +244,7 @@
   }
 }
 
-@keyframes globalError {
+@keyframes globalErrorShow {
   0% {
     right: 100%;
     opacity: 0;
@@ -235,5 +252,16 @@
   100% {
     right: 0;
     opacity: 1;
+  }
+}
+
+@keyframes globalErrorHide {
+  0% {
+    right: 0;
+    opacity: 1;
+  }
+  100% {
+    right: 100%;
+    opacity: 0;
   }
 }

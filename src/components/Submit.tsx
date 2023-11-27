@@ -1,9 +1,10 @@
 "use client";
 
 import { useFormErrorStore } from "@/stores/form-error";
-import { useEffect, useState } from "react";
-import { experimental_useFormStatus } from "react-dom";
+import { useEffect } from "react";
 import { RotatingLines } from "react-loader-spinner";
+// @ts-ignore
+import { useFormStatus } from "react-dom";
 
 export default function Submit({
   children,
@@ -12,7 +13,7 @@ export default function Submit({
   children: React.ReactNode;
   formAction?: (formData: FormData) => Promise<void>;
 }) {
-  const { pending } = experimental_useFormStatus();
+  const { pending } = useFormStatus();
   const { clearError } = useFormErrorStore();
 
   // reset the error state when the component is mounted

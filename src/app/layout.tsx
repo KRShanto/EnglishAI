@@ -9,7 +9,7 @@ const robotoSlab = Roboto_Slab({
 });
 
 // Font for the logo
-export const logoFont = Poppins({
+const logoFont = Poppins({
   weight: "700",
   subsets: ["latin"],
   variable: "--logo-font",

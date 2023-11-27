@@ -1,7 +1,8 @@
 "use client";
 
 import LoadingAnimation from "@/../public/loading.json";
-import Lottie from "lottie-react";
+import dynamic from "next/dynamic";
+const Lottie = dynamic(() => import("lottie-react"), { ssr: false });
 import CopyBtn from "@/components/CopyBtn";
 import { useGrammarImprover } from "@/stores/grammar-improve";
 import { useGrammarAlternative } from "@/stores/grammar-alternative";

@@ -3,7 +3,8 @@
 import React, { useEffect, useState } from "react";
 import moment from "moment";
 import Link from "next/link";
-import Lottie from "lottie-react";
+import dynamic from "next/dynamic";
+const Lottie = dynamic(() => import("lottie-react"), { ssr: false });
 import EmailSentAnimation from "@/../public/animations/email-sent.json";
 
 export default function SentEmail({

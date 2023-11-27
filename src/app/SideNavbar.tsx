@@ -3,20 +3,36 @@
 import Link from "next/link";
 import React from "react";
 import { useSelectedLayoutSegment } from "next/navigation";
+import { MdOutlineTextFields } from "react-icons/md";
+import { MdEmail } from "react-icons/md";
+import { MdOutlineEmail } from "react-icons/md";
+import { RiSpeakFill } from "react-icons/ri";
+import { IoChatboxEllipses } from "react-icons/io5";
+import { FaBookOpen } from "react-icons/fa";
+import { FaCircleInfo } from "react-icons/fa6";
+import { IoSettings } from "react-icons/io5";
+import { FaRegUser } from "react-icons/fa";
 
 export default function SideNavbar() {
   const segment = useSelectedLayoutSegment();
 
   const links = [
     [
-      { href: "/grammar", text: "Grammar" },
-      { href: "/writing", text: "Writing" },
-      { href: "/write-together", text: "Write Together" },
+      { href: "/grammar", text: "Grammar", icon: <FaBookOpen /> },
+      { href: "/paragraph", text: "Paragraph", icon: <MdOutlineTextFields /> },
+      { href: "/letter", text: "Letter", icon: <MdEmail /> },
+      { href: "/email", text: "Email", icon: <MdOutlineEmail /> },
+      { href: "/dialogue", text: "Dialogue", icon: <RiSpeakFill /> },
+      {
+        href: "conversation",
+        text: "Conversation",
+        icon: <IoChatboxEllipses />,
+      },
     ],
     [
-      { href: "/about", text: "About" },
-      { href: "/settings", text: "Settings" },
-      { href: "/profile", text: "Profile" },
+      { href: "/about", text: "About", icon: <FaCircleInfo /> },
+      { href: "/settings", text: "Settings", icon: <IoSettings /> },
+      { href: "/profile", text: "Profile", icon: <FaRegUser /> },
     ],
   ];
 
@@ -42,6 +58,7 @@ export default function SideNavbar() {
                       : ""
                   }`}
                 >
+                  {link.icon}
                   {link.text}
                 </Link>
               ))}

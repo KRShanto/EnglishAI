@@ -1,3 +1,3 @@
 export default function Page() {
-  return <h1>Write to AI</h1>;
+  return <div>Page</div>;
 }

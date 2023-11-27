@@ -26,13 +26,15 @@
       padding: 1rem 2rem;
 
       a {
+        display: flex;
+        align-items: center;
+        gap: 0.3rem;
         text-decoration: none;
         color: rgba(255, 255, 255, 0.769);
-        font-size: 1.5rem;
+        font-size: 1.3rem;
         font-weight: 500;
         transition: all 0.2s ease-in-out;
         font-family: sans-serif;
-        font-weight: bold;
         padding: 0.8rem 1rem;
         border-radius: 0.5rem;
         font-family: var(--roboto-slab);

@@ -1,64 +1,57 @@
 "use client";
 
-import { useSelectedLayoutSegment } from "next/navigation";
-import { useGrammarInput } from "@/stores/grammar-input";
-import { useRouter } from "next/navigation";
-import { useGrammarChecker } from "@/stores/grammar-check";
-import Link from "next/link";
-import { useGrammarImprover } from "@/stores/grammar-improve";
-import { useGrammarAlternative } from "@/stores/grammar-alternative";
+import { openAIAlternativeGrammar } from "@/actions/grammar-alternative/openAIAlternativeGrammar";
+import { openAICheckGrammar } from "@/actions/grammar-checker/openAICheckGrammar";
+import { openAIImproveGrammar } from "@/actions/grammar-improver/openAIImproveGrammar";
+import { CurrentStateType, ResultDataType } from "@/types/grammar";
 
-export default function Options() {
-  const segment = useSelectedLayoutSegment();
-  const router = useRouter();
-  const { input } = useGrammarInput();
-  const { check } = useGrammarChecker();
-  const { improve } = useGrammarImprover();
-  const { alternate } = useGrammarAlternative();
+export default function CheckButton({
+  input,
+  setInput,
+  setCurrentState,
+  setResultData,
+}: {
+  input: string;
+  setInput: (input: string) => void;
+  setCurrentState: (state: CurrentStateType) => void;
+  setResultData: (data: ResultDataType) => void;
+}) {
+  // handler function for calling openAI api
+  const openAIcall = async (type: "Check" | "Improve" | "Alternative") => {
+    if (input === "") return;
 
-  function checkGrammar() {
-    // if the page is not "check", change it to "check"
-    if (segment !== "check") {
-      router.push("/grammar/check");
+    setCurrentState("Fetching");
+
+    const res =
+      type === "Check"
+        ? await openAICheckGrammar(input)
+        : type === "Improve"
+        ? await openAIImproveGrammar(input)
+        : await openAIAlternativeGrammar(input);
+
+    if (res.error) {
+      setCurrentState("Error");
+      return;
     }
 
-    // fetch server
-    check(input);
-  }
-
-  function improveGrammar() {
-    // if the page is not "improve", change it to "improve"
-    if (segment !== "improve") {
-      router.push("/grammar/improve");
-    }
-
-    // fetch server
-    improve(input);
-  }
-
-  function alternativeGrammar() {
-    // if the page is not "alternative", change it to "alternative"
-    if (segment !== "alternative") {
-      router.push("/grammar/alternative");
-    }
-
-    // fetch server
-    alternate(input);
-  }
+    setResultData(res);
+    setCurrentState(`Result${type}`);
+    setInput("");
+  };
 
   return (
-    <>
-      <div className="options">
-        <button className="option" onClick={checkGrammar}>
-          Check your grammar
-        </button>
-        <button className="option" onClick={improveGrammar}>
-          Improve your grammar
-        </button>
-        <button className="option" onClick={alternativeGrammar}>
-          Alternative sentences
-        </button>
-      </div>
-    </>
+    <div className="options">
+      <button className="option" onClick={() => openAIcall("Check")}>
+        Check your grammar
+      </button>
+
+      <button className="option" onClick={() => openAIcall("Improve")}>
+        Improve your grammar
+      </button>
+
+      <button className="option" onClick={() => openAIcall("Alternative")}>
+        Alternative sentences
+      </button>
+    </div>
   );
 }

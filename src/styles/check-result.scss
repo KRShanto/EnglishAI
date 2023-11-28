@@ -6,12 +6,18 @@
   margin: 0 auto;
   position: relative;
   bottom: 5rem;
+  display: none;
+}
+
+.loading.show {
+  display: block;
 }
 
 .checking-result {
-  .heading {
-    font-family: sans-serif;
+  .result-heading {
+    font-family: var(--roboto-slab);
     @include mainGradient();
+    text-align: center;
     font-size: 1.8rem;
     width: 50rem;
     margin: 0 auto;

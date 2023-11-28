@@ -3,8 +3,12 @@
 import { openAI } from "@/lib/openAi";
 import { openAIfetch } from "@/lib/openAi";
 import { getMessages } from "./messages";
+import { GrammarAlternativeResult } from "@/types/grammar";
 
-export async function openAIAlternativeGrammar(text: string) {
+// TODO: throw error if response type doesn't match
+export async function openAIAlternativeGrammar(
+  text: string
+): Promise<GrammarAlternativeResult & { error?: boolean }> {
   const messages = getMessages(text);
 
   let response;

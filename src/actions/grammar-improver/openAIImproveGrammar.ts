@@ -3,8 +3,12 @@
 import { openAI } from "@/lib/openAi";
 import { getMessages } from "./messages";
 import { openAIfetch } from "@/lib/openAi";
+import { GrammarImproverResult } from "@/types/grammar";
 
-export async function openAIImproveGrammar(text: string) {
+// TODO: throw error if response type doesn't match
+export async function openAIImproveGrammar(
+  text: string
+): Promise<GrammarImproverResult & { error?: boolean }> {
   const messages = getMessages(text);
 
   let response;
@@ -17,6 +21,9 @@ export async function openAIImproveGrammar(text: string) {
 
     response = completion.data.choices[0].message?.content || "";
   } else {
+    // wait for 4 second
+    await new Promise((resolve) => setTimeout(resolve, 4000));
+
     response = "My name is Shanto";
   }
 

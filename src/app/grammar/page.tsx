@@ -3,7 +3,7 @@
 import { CurrentStateType, ResultDataType } from "@/types/grammar";
 import Options from "./Options";
 import Result from "./Result";
-import Scrollers from "./Scrollers";
+import Scrollers from "../../components/Scrollers";
 import { useState } from "react";
 import dynamic from "next/dynamic";
 const Lottie = dynamic(() => import("lottie-react"), { ssr: false });

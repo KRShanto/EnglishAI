@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import React from "react";
-import { useSelectedLayoutSegment } from "next/navigation";
+import { usePathname } from "next/navigation";
 import { MdOutlineTextFields } from "react-icons/md";
 import { MdEmail } from "react-icons/md";
 import { MdOutlineEmail } from "react-icons/md";
@@ -14,17 +14,21 @@ import { IoSettings } from "react-icons/io5";
 import { FaRegUser } from "react-icons/fa";
 
 export default function SideNavbar() {
-  const segment = useSelectedLayoutSegment();
+  const path = usePathname();
 
   const links = [
     [
       { href: "/grammar", text: "Grammar", icon: <FaBookOpen /> },
-      { href: "/paragraph", text: "Paragraph", icon: <MdOutlineTextFields /> },
-      { href: "/letter", text: "Letter", icon: <MdEmail /> },
-      { href: "/email", text: "Email", icon: <MdOutlineEmail /> },
-      { href: "/dialogue", text: "Dialogue", icon: <RiSpeakFill /> },
       {
-        href: "conversation",
+        href: "/grammar/paragraph",
+        text: "Paragraph",
+        icon: <MdOutlineTextFields />,
+      },
+      { href: "/grammar/letter", text: "Letter", icon: <MdEmail /> },
+      { href: "/grammar/email", text: "Email", icon: <MdOutlineEmail /> },
+      { href: "/grammar/dialogue", text: "Dialogue", icon: <RiSpeakFill /> },
+      {
+        href: "/conversation",
         text: "Conversation",
         icon: <IoChatboxEllipses />,
       },
@@ -35,6 +39,8 @@ export default function SideNavbar() {
       { href: "/profile", text: "Profile", icon: <FaRegUser /> },
     ],
   ];
+
+  const currentPath = path.split("/")[path.split("/").length - 1];
 
   return (
     <nav className="side-navbar">
@@ -47,15 +53,15 @@ export default function SideNavbar() {
       <div className="links">
         {links.map((section, i) => (
           <div key={i}>
-            <div className={`link-section ${i === 0 ? "top" : "bottom"}`}>
+            <div className="link-section">
               {section.map((link, i) => (
                 <Link
                   key={i}
                   href={link.href}
                   className={`${
-                    segment && segment === link.href.split("/")[1]
-                      ? "active"
-                      : ""
+                    currentPath ===
+                      link.href.split("/")[link.href.split("/").length - 1] &&
+                    "active"
                   }`}
                 >
                   {link.icon}

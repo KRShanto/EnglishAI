@@ -1,0 +1,80 @@
+.conversation {
+  display: flex;
+  flex-direction: row;
+
+  .rooms {
+    width: 30%;
+    height: 100vh;
+    border-right: 1px solid rgba(204, 204, 204, 0.265);
+    padding: 1rem;
+
+    .header {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid rgba(204, 204, 204, 0.265);
+
+      .heading {
+        font-size: 2.2rem;
+        @include mainGradient();
+        font-family: var(--logo-font);
+      }
+
+      .options {
+        .option {
+          border-radius: 50%;
+          padding: 0.5rem;
+          display: flex;
+          font-size: 1.5rem;
+          background-color: rgba(204, 204, 204, 0.203);
+          color: white;
+          cursor: pointer;
+          transform: scale(1);
+          transition: all 0.1s ease-in-out;
+
+          &:active {
+            transform: scale(0.9);
+          }
+
+          &:hover {
+            background-color: rgba(204, 204, 204, 0.265);
+          }
+        }
+      }
+    }
+
+    .list {
+      .room {
+        display: flex;
+        flex-direction: row;
+        gap: 2rem;
+        align-items: center;
+        padding: 0.8rem;
+        cursor: pointer;
+        transition: all 0.1s ease-in-out;
+        text-decoration: none;
+        border-radius: 0.5rem;
+
+        &:hover {
+          background-color: rgba(204, 204, 204, 0.075);
+        }
+
+        .avatar {
+          border-radius: 50%;
+        }
+
+        .name {
+          font-size: 1.5rem;
+          font-family: var(--roboto-slab);
+          color: rgba(255, 255, 255, 0.846);
+        }
+      }
+    }
+  }
+
+  .messages {
+    width: 80%;
+    border: 1px solid #ccc;
+  }
+}

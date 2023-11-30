@@ -3,22 +3,23 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   position: relative;
   width: 100vw;
   height: 100vh;
   background-color: rgb(0, 3, 26);
   color: white;
+  display: flex;
+  flex-direction: row;
 }
 
 main {
   width: 80%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  right: 0;
-  overflow-y: scroll;
-  scroll-behavior: smooth;
 }
 
 .pop-btn {
@@ -37,3 +38,4 @@ main {
 @import "check-result";
 @import "form";
 @import "forgot";
+@import "conversation";

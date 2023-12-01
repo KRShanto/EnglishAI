@@ -6,7 +6,7 @@ import { nanoid } from "nanoid";
 import slugify from "slugify";
 import * as EmailValidator from "email-validator";
 import { FormErrorType } from "@/types/form-errror";
-import { MIN_PASSWORD_LENGTH } from "@/lib/consts";
+import { MIN_PASSWORD_LENGTH, DEFAULT_IMAGES } from "@/lib/consts";
 
 interface RegisterData {
   name: string;
@@ -68,6 +68,10 @@ export async function register({
   // generate username
   const username = slugify(name) + "-" + nanoid(6);
 
+  // randomly choose an image
+  const image =
+    DEFAULT_IMAGES[Math.floor(Math.random() * DEFAULT_IMAGES.length)];
+
   try {
     await db.user.create({
       data: {
@@ -76,6 +80,7 @@ export async function register({
         country,
         username,
         password: hashedPassword,
+        image,
       },
     });
 

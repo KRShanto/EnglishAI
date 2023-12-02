@@ -8,7 +8,7 @@ import { MdEmail } from "react-icons/md";
 import { MdOutlineEmail } from "react-icons/md";
 import { RiSpeakFill } from "react-icons/ri";
 import { IoChatboxEllipses } from "react-icons/io5";
-import { FaBookOpen } from "react-icons/fa";
+import { FaBookOpen, FaSearch } from "react-icons/fa";
 import { FaCircleInfo } from "react-icons/fa6";
 import { IoSettings } from "react-icons/io5";
 import { FaRegUser } from "react-icons/fa";
@@ -36,6 +36,7 @@ export default function SideNavbar() {
     [
       { href: "/about", text: "About", icon: <FaCircleInfo /> },
       { href: "/settings", text: "Settings", icon: <IoSettings /> },
+      { href: "/search", text: "Search", icon: <FaSearch /> },
       { href: "/profile", text: "Profile", icon: <FaRegUser /> },
     ],
   ];

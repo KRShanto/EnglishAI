@@ -9,7 +9,7 @@ export default async function DisplayRooms() {
         <h2 className="heading">Conversation</h2>
 
         <div className="options">
-          <Link href="#" className="option">
+          <Link href="/search" className="option">
             <FaPlus />
           </Link>
         </div>

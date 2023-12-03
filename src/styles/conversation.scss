@@ -72,9 +72,116 @@
       }
     }
   }
+}
+
+.conversation-page {
+  width: 70%;
+  max-height: 100vh;
+
+  .header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    border-bottom: 1px solid rgba(204, 204, 204, 0.265);
+    height: 10%;
+
+    .info {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 1rem;
+
+      .back {
+        color: #333;
+        font-size: 24px;
+        text-decoration: none;
+
+        &:hover {
+          color: #666;
+        }
+      }
+
+      .user {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-family: var(--logo-font);
+        font-size: 1.5rem;
+        color: rgba(255, 255, 255, 0.846);
+
+        img {
+          border-radius: 50%;
+        }
+      }
+    }
+  }
 
   .messages {
-    width: 80%;
-    border: 1px solid #ccc;
+    height: 80%;
+    overflow-y: auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+
+    .message {
+      display: inline-block;
+
+      &.sent-msg {
+        align-self: flex-end;
+        background-color: #0384fc;
+        border-radius: 18px 18px 0 18px;
+      }
+
+      &.received-msg {
+        align-self: flex-start;
+        background-color: rgba(0, 31, 80, 0.992);
+        border-radius: 18px 18px 18px 0;
+      }
+
+      .text {
+        padding: 1rem 1.5rem;
+        font-size: 1.3rem;
+        font-family: var(--roboto);
+      }
+    }
+  }
+
+  .form {
+    height: 10%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+
+    input {
+      width: 95%;
+      border: none;
+      outline: none;
+      padding: 1rem;
+      font-size: 1.3rem;
+      font-family: sans-serif;
+      color: rgba(255, 255, 255, 0.846);
+      background-color: rgba(22, 37, 60, 0.992);
+      border-radius: 0.5rem;
+    }
+
+    button {
+      width: 5%;
+      border: none;
+      outline: none;
+      background-color: transparent;
+      color: #0384fc;
+      font-size: 2rem;
+      cursor: pointer;
+      transition: all 0.1s ease-in-out;
+
+      &:hover {
+        color: #0055ff;
+      }
+    }
   }
 }

@@ -1,6 +1,7 @@
 import SideNavbar from "@/app/SideNavbar";
 import "../styles/main.scss";
 import { Poppins, Roboto_Slab } from "next/font/google";
+import TopLoader from "./TopLoader";
 
 const robotoSlab = Roboto_Slab({
   subsets: ["latin-ext"],
@@ -27,6 +28,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${robotoSlab.variable} ${logoFont.variable}`}>
+        <TopLoader />
         <SideNavbar />
         <main id="main">{children}</main>
       </body>

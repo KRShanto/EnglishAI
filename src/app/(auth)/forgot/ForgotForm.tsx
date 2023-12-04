@@ -50,7 +50,13 @@ export default function ForgotForm({
 
       <FormError />
 
-      <Input label="Email address" type="email" name="email" required />
+      <Input
+        label="Email address"
+        type="email"
+        name="email"
+        required
+        autoFocus
+      />
 
       <Submit formAction={handler}>Reset</Submit>
     </form>

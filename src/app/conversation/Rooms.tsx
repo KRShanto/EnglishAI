@@ -3,9 +3,33 @@ import { db } from "@/lib/db";
 import { AuthSession } from "@/types/auth";
 import Image from "next/image";
 import Link from "next/link";
+import { Suspense } from "react";
 import { FaPlus } from "react-icons/fa";
 
 export default async function DisplayRooms() {
+  return (
+    <div className="rooms">
+      <div className="header">
+        <h2 className="heading">Conversation</h2>
+
+        <div className="options">
+          <Link href="/search" className="option">
+            <FaPlus />
+          </Link>
+        </div>
+      </div>
+
+      <Suspense fallback={<h1>Its also loading bitch</h1>}>
+        <Rooms />
+      </Suspense>
+    </div>
+  );
+}
+
+async function Rooms() {
+  // Wait for 3 seconds
+  // await new Promise((resolve) => setTimeout(resolve, 5000));
+
   const session = (await getAuthSession()) as AuthSession | null;
 
   if (!session) {
@@ -40,17 +64,7 @@ export default async function DisplayRooms() {
   );
 
   return (
-    <div className="rooms">
-      <div className="header">
-        <h2 className="heading">Conversation</h2>
-
-        <div className="options">
-          <Link href="/search" className="option">
-            <FaPlus />
-          </Link>
-        </div>
-      </div>
-
+    <>
       {roomsWithUsers.map((room) => (
         <div className="list" key={room.user.id}>
           <Link href={`/conversation/${room.id}`} className="room">
@@ -66,6 +80,6 @@ export default async function DisplayRooms() {
           </Link>
         </div>
       ))}
-    </div>
+    </>
   );
 }

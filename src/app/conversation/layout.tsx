@@ -9,8 +9,8 @@ export default function Layout({
 }) {
   return (
     <div className="conversation">
-      {/* TODO use <Suspense> */}
       <DisplayRooms />
+
       {children}
       {searchModal}
     </div>

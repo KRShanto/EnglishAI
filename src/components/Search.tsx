@@ -29,7 +29,13 @@ export default function Search({ connectButton }: { connectButton?: boolean }) {
     <form className="search" action={handler}>
       <div className="search-form">
         <label htmlFor="search">Search for a user</label>
-        <input type="text" id="search" name="search" placeholder=" " />
+        <input
+          type="text"
+          id="search"
+          name="search"
+          placeholder=" "
+          autoFocus
+        />
         <button>
           <FaSearch />
           Search

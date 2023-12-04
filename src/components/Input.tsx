@@ -9,12 +9,14 @@ export default function Input({
   type = "text",
   required,
   defaultValue,
+  autoFocus,
 }: {
   name: string;
   label: string;
   type?: string;
   required?: boolean;
   defaultValue?: string;
+  autoFocus?: boolean;
 }) {
   const labelTop = useRef<null | HTMLLabelElement>(null);
   const labelBottom = useRef<null | HTMLLabelElement>(null);
@@ -83,6 +85,7 @@ export default function Input({
           id={name}
           required={required}
           ref={input}
+          autoFocus={autoFocus}
           onFocus={handleFocus}
           onBlur={handleBlur}
           value={inputValue}

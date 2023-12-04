@@ -46,7 +46,13 @@ export default function ResetForm({
 
       <FormError />
 
-      <Input label="Password" name="password" type="password" required />
+      <Input
+        label="Password"
+        name="password"
+        type="password"
+        required
+        autoFocus
+      />
       <Input
         label="Confirm Password"
         name="passwordConfirmation"

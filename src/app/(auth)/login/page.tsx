@@ -12,7 +12,13 @@ export default function Page() {
 
         <FormError />
 
-        <Input name="email" label="Your Email Address" type="email" required />
+        <Input
+          name="email"
+          label="Your Email Address"
+          type="email"
+          required
+          autoFocus
+        />
         <Input name="password" label="Your Password" type="password" required />
 
         <div className="links">

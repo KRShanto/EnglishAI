@@ -62,12 +62,28 @@
 
         .avatar {
           border-radius: 50%;
+
+          &.skeleton {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background-color: rgba(204, 204, 204, 0.265);
+            animation: pulse 1.5s infinite ease-in-out alternate;
+          }
         }
 
         .name {
           font-size: 1.5rem;
           font-family: var(--roboto-slab);
           color: rgba(255, 255, 255, 0.846);
+
+          &.skeleton {
+            width: 200px;
+            height: 30px;
+            background-color: rgba(204, 204, 204, 0.265);
+            border-radius: 0.5rem;
+            animation: pulse 1.5s infinite ease-in-out alternate;
+          }
         }
       }
     }
@@ -77,6 +93,7 @@
 .conversation-page {
   width: 70%;
   max-height: 100vh;
+  position: relative;
 
   .header {
     width: 100%;
@@ -183,5 +200,29 @@
         color: #0055ff;
       }
     }
+  }
+}
+
+.messages-loading {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  .animation {
+    width: 20rem;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
   }
 }

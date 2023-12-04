@@ -1,6 +1,6 @@
 "use client";
 
-import DoneAnimation from "@/../public/done.json";
+import DoneAnimation from "@/../public/animations/done.json";
 import dynamic from "next/dynamic";
 const Lottie = dynamic(() => import("lottie-react"), { ssr: false });
 import { useEffect, useState } from "react";

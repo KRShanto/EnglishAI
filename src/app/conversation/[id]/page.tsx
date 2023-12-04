@@ -14,8 +14,8 @@ export default async function Page({ params }: { params: { id: string } }) {
 
   const { user } = session;
 
-  // Wait for 3 seconds
-  // await new Promise((resolve) => setTimeout(resolve, 3000));
+  // Wait for 5 seconds
+  // await new Promise((resolve) => setTimeout(resolve, 50000));
 
   const room = await db.room.findFirst({
     where: { id },

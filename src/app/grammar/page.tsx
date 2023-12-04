@@ -7,7 +7,7 @@ import Scrollers from "../../components/Scrollers";
 import { useState } from "react";
 import dynamic from "next/dynamic";
 const Lottie = dynamic(() => import("lottie-react"), { ssr: false });
-import LoadingAnimation from "@/../public/loading.json";
+import LoadingAnimation from "@/../public/animations/loading.json";
 
 export default function Page() {
   const [input, setInput] = useState("Shanto want to had a Lamborghini.");

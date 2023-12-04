@@ -19,7 +19,7 @@ export default async function DisplayRooms() {
         </div>
       </div>
 
-      <Suspense fallback={<h1>Its also loading bitch</h1>}>
+      <Suspense fallback={<Loading />}>
         <Rooms />
       </Suspense>
     </div>
@@ -27,7 +27,7 @@ export default async function DisplayRooms() {
 }
 
 async function Rooms() {
-  // Wait for 3 seconds
+  // Wait for 5 seconds
   // await new Promise((resolve) => setTimeout(resolve, 5000));
 
   const session = (await getAuthSession()) as AuthSession | null;
@@ -80,6 +80,37 @@ async function Rooms() {
           </Link>
         </div>
       ))}
+    </>
+  );
+}
+
+// show skeleton loading
+function Loading() {
+  return (
+    <>
+      <div className="list">
+        <div className="room">
+          <div className="avatar skeleton" />
+
+          <div className="name skeleton" />
+        </div>
+      </div>
+
+      <div className="list">
+        <div className="room">
+          <div className="avatar skeleton" />
+
+          <div className="name skeleton" />
+        </div>
+      </div>
+
+      <div className="list">
+        <div className="room">
+          <div className="avatar skeleton" />
+
+          <div className="name skeleton" />
+        </div>
+      </div>
     </>
   );
 }

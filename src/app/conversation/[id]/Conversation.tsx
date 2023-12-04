@@ -31,10 +31,10 @@ export default function Conversation({
   }, [socket]);
 
   return (
-    <div className="conversation-page">
+    <>
       <Header otherUser={otherUser} />
       <Messages room={room} user={user} />
       <Input roomId={room.id!} />
-    </div>
+    </>
   );
 }

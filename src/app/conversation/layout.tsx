@@ -11,7 +11,7 @@ export default function Layout({
     <div className="conversation">
       <DisplayRooms />
 
-      {children}
+      <div className="conversation-page">{children}</div>
       {searchModal}
     </div>
   );

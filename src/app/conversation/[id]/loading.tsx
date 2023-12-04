@@ -1,7 +1,11 @@
-import React from 'react'
+"use client";
+
+import { FadeLoader } from "react-spinners";
 
 export default function Loading() {
   return (
-    <h1>Its loading bitch</h1>
-  )
+    <div className="messages-loading">
+      <FadeLoader color="cyan" height={38} margin={24} radius={5} width={13} />
+    </div>
+  );
 }

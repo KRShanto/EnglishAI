@@ -1,4 +1,6 @@
 import { Socket } from "socket.io";
+import { GrammarCheckerResult } from "./grammar";
+import { ChatMessage } from "./db";
 
 export type ClientSocketType = Socket<
   ServerToClientMessage,
@@ -6,11 +8,8 @@ export type ClientSocketType = Socket<
 >;
 
 export interface ServerToClientMessage {
-  message: (params: {
-    message: string;
-    userId: string;
-    roomId: string;
-  }) => void;
+  message: (params: { msg: ChatMessage; userId: string }) => void;
+  "openai-response": (params: { msg: ChatMessage }) => void;
 }
 
 export interface ClientToServerMessage {

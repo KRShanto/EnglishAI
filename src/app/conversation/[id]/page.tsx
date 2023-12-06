@@ -14,13 +14,12 @@ export default async function Page({ params }: { params: { id: string } }) {
 
   const { user } = session;
 
-  // Wait for 5 seconds
-  // await new Promise((resolve) => setTimeout(resolve, 50000));
-
   const room = await db.room.findFirst({
     where: { id },
     select: {
       id: true,
+      type: true,
+      createdAt: true,
       users: {
         select: {
           id: true,
@@ -31,7 +30,7 @@ export default async function Page({ params }: { params: { id: string } }) {
       messages: {
         select: {
           id: true,
-          text: true,
+          msg: true,
           user: {
             select: {
               id: true,

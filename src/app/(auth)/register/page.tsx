@@ -11,7 +11,7 @@ export default function Page() {
 
         <FormError />
 
-        <Input name="name" label="Your Name" required autoFocus />
+        <Input name="name" label="Your Name" required />
         <Input name="email" label="Your Email Address" type="email" required />
         <Input name="country" label="Your Country" required />
         <Input name="password" label="Your Password" type="password" required />

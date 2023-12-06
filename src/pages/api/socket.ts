@@ -1,3 +1,4 @@
+import { openAICheckGrammar } from "@/actions/grammar-checker/openAICheckGrammar";
 import { db } from "@/lib/db";
 import {
   ClientToServerMessage,
@@ -5,6 +6,7 @@ import {
   ServerToClientMessage,
   SocketData,
 } from "@/types/socket";
+import { nanoid } from "nanoid";
 import { Server } from "socket.io";
 
 export default function handler(req: any, res: any) {
@@ -35,10 +37,67 @@ export default function handler(req: any, res: any) {
       });
 
       socket.on("send-message", async ({ message, roomId }) => {
-        // Save the message to the database
+        // generate a random id
+        const id = nanoid(15);
+
+        // send the raw message to the room
+        socket.to(roomId).emit("message", {
+          msg: {
+            id,
+            openAIstatus: "fetching",
+            message: {
+              text: message,
+              result: {
+                isCorrect: true,
+                correctText: "",
+                wrongText: [],
+              },
+            },
+          },
+          userId: socket.data.userId,
+        });
+
+        // send back to the sender
+        socket.emit("message", {
+          msg: {
+            id,
+            openAIstatus: "fetching",
+            message: {
+              text: message,
+              result: {
+                isCorrect: true,
+                correctText: "",
+                wrongText: [],
+              },
+            },
+          },
+          userId: socket.data.userId,
+        });
+
+        // Check grammar
+        const res = await openAICheckGrammar(message);
+
+        // send the result to the room
+        socket.to(roomId).emit("openai-response", {
+          msg: {
+            id,
+            openAIstatus: "done",
+            message: res,
+          },
+        });
+
+        // send back to the sender
+        socket.emit("openai-response", {
+          msg: {
+            id,
+            openAIstatus: "done",
+            message: res,
+          },
+        });
+
+        // save to database
         await db.message.create({
           data: {
-            text: message,
             user: {
               connect: {
                 id: socket.data.userId,
@@ -49,20 +108,9 @@ export default function handler(req: any, res: any) {
                 id: roomId,
               },
             },
+            // @ts-ignore
+            msg: { id, openAIstatus: "done", message: res },
           },
-        });
-
-        socket.to(roomId).emit("message", {
-          message,
-          userId: socket.data.userId,
-          roomId,
-        });
-
-        // send back to the sender
-        socket.emit("message", {
-          message,
-          userId: socket.data.userId,
-          roomId,
         });
       });
 

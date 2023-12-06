@@ -78,7 +78,7 @@ model Message {
   roomId    String
   user      User     @relation(fields: [userId], references: [id])
   userId    String
-  text      String
+  msg   Json?
 }
 
 enum RoomType {

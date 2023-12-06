@@ -144,24 +144,120 @@
     gap: 0.5rem;
 
     .message {
-      display: inline-block;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow: hidden;
+      width: fit-content;
 
       &.sent-msg {
         align-self: flex-end;
+      }
+
+      &.received-msg {
+        align-self: flex-start;
+      }
+    }
+
+    .text {
+      padding: 0.7rem 1.2rem;
+      font-size: 1.3rem;
+      font-family: var(--roboto);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+
+      .wrong-text {
+        color: red;
+        font-weight: bold;
+      }
+
+      .arrow {
+        padding: 0.2rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 0.2rem;
+        cursor: pointer;
+        transition: all 0.1s ease-in-out;
+        border: none;
+        outline: none;
+        background-color: transparent;
+        color: white;
+        font-size: 1.2rem;
+
+        &:hover {
+          background-color: rgba(255, 255, 255, 0.2);
+        }
+      }
+
+      &.sent-msg {
         background-color: #0384fc;
         border-radius: 18px 18px 0 18px;
       }
 
       &.received-msg {
-        align-self: flex-start;
         background-color: rgba(0, 31, 80, 0.992);
         border-radius: 18px 18px 18px 0;
+        // reverse the icons
+        flex-direction: row-reverse;
       }
 
-      .text {
-        padding: 1rem 1.5rem;
-        font-size: 1.3rem;
-        font-family: var(--roboto);
+      &.wrong {
+        background-color: rgba(255, 0, 47, 0.333);
+      }
+
+      &.correct {
+        position: absolute;
+        transition: all 0.3s ease-in-out;
+        width: 100%;
+        z-index: -1;
+        opacity: 0;
+
+        &.visible {
+          background-color: rgba(128, 255, 0, 0.372);
+          position: relative;
+          z-index: 1;
+          opacity: 1;
+
+          &.sent-msg {
+            // go back
+            left: 0;
+          }
+
+          &.received-msg {
+            // go back
+            right: 0;
+          }
+        }
+
+        &.sent-msg {
+          left: 100%;
+          border-radius: 18px 0 18px 18px;
+        }
+
+        &.received-msg {
+          right: 100%;
+          border-radius: 0 18px 18px 18px;
+        }
+
+        &.going-invisible {
+          opacity: 0;
+
+          &.sent-msg {
+            // go back
+            left: 100%;
+          }
+
+          &.received-msg {
+            // go back
+            right: 100%;
+          }
+        }
+
+        &.invisible {
+          position: absolute;
+        }
       }
     }
   }

@@ -7,7 +7,6 @@ export interface GrammarCheckerResult {
       text: string;
       wrong: boolean;
     }[];
-    description: string[];
   };
 }
 

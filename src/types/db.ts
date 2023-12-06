@@ -1,5 +1,8 @@
 // NOTE: these properties are optional for prisma's select statement. But they aren't optional in the db.
 
+import { $Enums, Prisma } from "@prisma/client";
+import { GrammarCheckerResult } from "./grammar";
+
 export interface UserType {
   id?: string;
   name?: string;
@@ -14,7 +17,7 @@ export interface RoomType {
   id?: string;
   users?: UserType[];
   messages?: MessageType[];
-  type?: RoomType;
+  type?: $Enums.RoomType;
   createdAt?: Date;
 }
 
@@ -23,11 +26,12 @@ export interface MessageType {
   createdAt?: Date;
   roomId?: string;
   userId?: string;
-  text?: string;
   user?: UserType;
+  msg?: Prisma.JsonValue;
 }
 
-export enum RoomTypeEnum {
-  INDIVIDUAL = "INDIVIDUAL",
-  GROUP = "GROUP",
+export interface ChatMessage {
+  id: string;
+  openAIstatus: "fetching" | "done";
+  message: GrammarCheckerResult;
 }

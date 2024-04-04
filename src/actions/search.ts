@@ -18,7 +18,6 @@ export async function search(name: string): Promise<SearchData[]> {
     where: {
       name: {
         contains: name,
-        mode: "insensitive",
       },
     },
     select: {

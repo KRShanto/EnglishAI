@@ -41,7 +41,7 @@ export default function SideNavbar() {
     ],
   ];
 
-  const currentPath = path.split("/")[path.split("/").length - 1];
+  const currentPath = path?.split("/")[path.split("/").length - 1];
 
   return (
     <nav className="side-navbar">

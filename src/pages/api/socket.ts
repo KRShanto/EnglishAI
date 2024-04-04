@@ -109,7 +109,7 @@ export default function handler(req: any, res: any) {
               },
             },
             // @ts-ignore
-            msg: { id, openAIstatus: "done", message: res },
+            msg: { id, message: res },
           },
         });
       });

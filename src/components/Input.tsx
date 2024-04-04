@@ -40,7 +40,7 @@ export default function Input({
 
       setTimeout(() => {
         setShouldTopLabelBeVisible(true);
-      }, 500);
+      }, 300);
     }
   };
 

@@ -1,21 +1,23 @@
 "use client";
 
-import { useSocket } from "@/hooks/useSocket";
 import { useState } from "react";
 import { IoSend } from "react-icons/io5";
 
 export default function Input({ roomId }: { roomId: string }) {
   const [input, setInput] = useState("");
-  const socket = useSocket();
 
-  const handler = () => {
+  const handler = async () => {
     if (!input) return;
 
-    socket &&
-      socket.emit("send-message", {
-        message: input,
-        roomId,
-      });
+    const res = await fetch("/api/pusher", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ message: input, roomId }),
+    });
+
+    const json = await res.json();
 
     setInput("");
   };

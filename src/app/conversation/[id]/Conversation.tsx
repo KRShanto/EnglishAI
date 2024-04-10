@@ -4,8 +4,6 @@ import { RoomType, UserType } from "@/types/db";
 import Header from "./Header";
 import Input from "./Input";
 import Messages from "./Messages";
-import { useSocket } from "@/hooks/useSocket";
-import { useEffect } from "react";
 
 export default function Conversation({
   otherUser,
@@ -16,20 +14,6 @@ export default function Conversation({
   room: RoomType;
   user: UserType;
 }) {
-  const socket = useSocket();
-
-  useEffect(() => {
-    if (socket) {
-      socket.emit("setup", {
-        id: user.id!,
-      });
-
-      socket.emit("join-room", {
-        roomId: room.id!,
-      });
-    }
-  }, [socket]);
-
   return (
     <>
       <Header otherUser={otherUser} />

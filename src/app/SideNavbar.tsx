@@ -20,13 +20,13 @@ export default function SideNavbar() {
     [
       { href: "/grammar", text: "Grammar", icon: <FaBookOpen /> },
       {
-        href: "/grammar/paragraph",
+        href: "/paragraph",
         text: "Paragraph",
         icon: <MdOutlineTextFields />,
       },
-      { href: "/grammar/letter", text: "Letter", icon: <MdEmail /> },
-      { href: "/grammar/email", text: "Email", icon: <MdOutlineEmail /> },
-      { href: "/grammar/dialogue", text: "Dialogue", icon: <RiSpeakFill /> },
+      { href: "/letter", text: "Letter", icon: <MdEmail /> },
+      { href: "/email", text: "Email", icon: <MdOutlineEmail /> },
+      { href: "/dialogue", text: "Dialogue", icon: <RiSpeakFill /> },
       {
         href: "/conversation",
         text: "Conversation",

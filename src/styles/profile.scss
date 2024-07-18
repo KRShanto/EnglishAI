@@ -1,0 +1,73 @@
+.profile {
+  .heading-div {
+    display: flex;
+    justify-content: center;
+  }
+
+  .heading {
+    font-size: 2.2rem;
+    @include mainGradient();
+    font-family: var(--logo-font);
+  }
+
+  form {
+    width: 50%;
+    margin: 3rem auto;
+
+    .wrap {
+      display: flex;
+      flex-direction: column;
+      margin: 2rem 0;
+    }
+
+    label {
+      font-size: 1.3rem;
+      font-weight: 500;
+      color: rgb(0, 149, 255);
+      font-family: var(--roboto-slab);
+      white-space: nowrap;
+      margin-bottom: 0.3rem;
+    }
+
+    input {
+      font-size: 1.3rem;
+      padding: 0.8rem;
+      border-radius: 0.3rem;
+      outline: none;
+      border: none;
+      font-family: sans-serif;
+      background-color: rgba(22, 37, 60, 0.992);
+      color: white;
+    }
+
+    input:focus {
+      border: 1px solid rgb(0, 149, 255);
+    }
+
+    button {
+      font-size: 1.2rem;
+      font-weight: bold;
+      border-radius: 0.3rem;
+      outline: none;
+      border: none;
+      font-family: sans-serif;
+      background-color: rgb(0, 110, 188);
+      color: white;
+      cursor: pointer;
+      transition: all 0.2s ease-in-out;
+      transform: scale(1);
+      width: 100%;
+      margin-top: 2rem;
+      height: 3.5rem;
+
+      &:hover {
+        background-color: rgba(0, 149, 255, 0.636);
+      }
+
+      &:active {
+        background-color: rgb(0, 149, 255, 0.6);
+        transform: scale(0.95);
+      }
+    }
+  }
+}

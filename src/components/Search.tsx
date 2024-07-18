@@ -22,7 +22,7 @@ export default function Search({ connectButton }: { connectButton?: boolean }) {
 
     const res = await search(name as string);
 
-    setData([...res, ...res, ...res, ...res, ...res, ...res, ...res, ...res]);
+    setData([...res]);
   };
 
   return (

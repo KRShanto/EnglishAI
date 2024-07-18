@@ -1,6 +1,7 @@
 import { getAuthSession } from "@/lib/auth";
 import React from "react";
 import GenerateEmail from "./GenerateEmail";
+import Title from "@/components/Title";
 
 export default async function Page() {
   const session = await getAuthSession();
@@ -11,6 +12,7 @@ export default async function Page() {
 
   return (
     <div>
+      <Title>Email Generator</Title>
       <GenerateEmail />
     </div>
   );

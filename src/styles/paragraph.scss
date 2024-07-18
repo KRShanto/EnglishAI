@@ -1,17 +1,6 @@
 // Styles for the grammar section. mainly grammar inputs and options
 
 .paragraph {
-  .heading-div {
-    display: flex;
-    justify-content: center;
-  }
-
-  .heading {
-    font-size: 2.2rem;
-    @include mainGradient();
-    font-family: var(--logo-font);
-  }
-
   .description {
     text-align: center;
     font-size: 1.5rem;

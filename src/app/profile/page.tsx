@@ -1,6 +1,7 @@
 import { getAuthSession } from "@/lib/auth";
 import UpdateForm from "./UpdateForm";
 import { User } from "next-auth";
+import Title from "@/components/Title";
 
 export default async function Page() {
   const session = await getAuthSession();
@@ -9,10 +10,7 @@ export default async function Page() {
 
   return (
     <div className="profile">
-      <div className="heading-div">
-        <h1 className="heading">Update your profile</h1>
-      </div>
-
+      <Title>Update your profile</Title>
       <UpdateForm user={session.user as User & { username: string }} />
     </div>
   );

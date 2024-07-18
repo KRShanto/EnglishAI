@@ -3,10 +3,6 @@ import { FaCopy, FaRobot } from "react-icons/fa";
 export default function GenerateEmail() {
   return (
     <div className="generate-email">
-      <div className="heading-div">
-        <h1 className="heading">Email Generator</h1>
-      </div>
-
       <div className="generate-email-bottom">
         <form className="main-form">
           {/* Subject */}

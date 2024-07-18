@@ -1,17 +1,6 @@
 .generate-email {
   padding: 2rem 10rem;
 
-  .heading-div {
-    display: flex;
-    justify-content: center;
-  }
-
-  .heading {
-    font-size: 2.2rem;
-    @include mainGradient();
-    font-family: var(--logo-font);
-  }
-
   .generate-email-bottom {
     display: flex;
     justify-content: space-between;

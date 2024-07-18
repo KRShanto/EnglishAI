@@ -5,6 +5,7 @@ import dynamic from "next/dynamic";
 const Lottie = dynamic(() => import("lottie-react"), { ssr: false });
 import LoadingAnimation from "@/../public/animations/loading.json";
 import Result from "./Result";
+import Title from "@/components/Title";
 
 export default function Page() {
   // TODO: temporary
@@ -15,9 +16,7 @@ export default function Page() {
 
   return (
     <div className="paragraph">
-      <div className="heading-div">
-        <h1 className="heading">Paragraph Generator</h1>
-      </div>
+      <Title>Paragraph Generator</Title>
 
       <div className="input-options">
         <textarea

@@ -8,6 +8,7 @@ import { useState } from "react";
 import dynamic from "next/dynamic";
 const Lottie = dynamic(() => import("lottie-react"), { ssr: false });
 import LoadingAnimation from "@/../public/animations/loading.json";
+import Title from "@/components/Title";
 
 export default function Page() {
   const [input, setInput] = useState("Shanto want to had a Lamborghini.");
@@ -18,9 +19,7 @@ export default function Page() {
 
   return (
     <div className="grammar">
-      <div className="heading-div">
-        <h1 className="heading">Grammar Checker</h1>
-      </div>
+      <Title>Grammar Checker</Title>
 
       <div className="input-options">
         <textarea

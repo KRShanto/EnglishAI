@@ -1,0 +1,10 @@
+.heading-title {
+  display: flex;
+  justify-content: center;
+
+  .title {
+    font-size: 2.2rem;
+    @include mainGradient();
+    font-family: var(--logo-font);
+  }
+}

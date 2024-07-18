@@ -16,7 +16,8 @@
 .checking-result {
   .result-heading {
     font-family: var(--roboto-slab);
-    @include mainGradient();
+    // @include mainGradient();
+    color: rgba(128, 255, 0, 0.718);
     text-align: center;
     font-size: 1.8rem;
     width: 50rem;
@@ -30,7 +31,7 @@
       top: 50%;
       width: 42%;
       height: 2px;
-      background: rgb(0, 153, 255);
+      background: rgba(128, 255, 0, 0.718);
     }
 
     &:before {

@@ -15,7 +15,7 @@ export async function openAIImproveGrammar(
 
   if (openAIfetch === "true") {
     const completion = await openAI.createChatCompletion({
-      model: "gpt-3.5-turbo",
+      model: process.env.OPENAI_MODEL || "gpt-3.5-turbo",
       messages,
     });
 

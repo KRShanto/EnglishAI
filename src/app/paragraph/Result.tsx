@@ -16,7 +16,7 @@ export default function Result({
       </div>
     );
 
-  if (result && result.length > 0)
+  if (result && result !== "Fetching" && result.length > 0)
     return (
       <div className="checking-result">
         <h2 className="result-heading">Result</h2>

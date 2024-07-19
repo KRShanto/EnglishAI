@@ -1,0 +1,357 @@
+.dialogue-page {
+  .dialogue {
+    display: flex;
+    justify-content: center;
+    gap: 5rem;
+
+    .left {
+      width: 55rem;
+
+      .form {
+        margin: 2rem 0;
+
+        label {
+          font-size: 1.5rem;
+          font-weight: 500;
+          color: rgb(0, 149, 255);
+          font-family: var(--roboto-slab);
+          white-space: nowrap;
+          margin-bottom: 0.3rem;
+          display: block;
+        }
+
+        textarea {
+          padding: 1rem;
+          border-radius: 5px;
+          width: 100%;
+          font-size: 1.3rem;
+          resize: none;
+          outline: none;
+          border: none;
+          background-color: rgba(255, 255, 255, 0.106);
+          color: rgba(255, 255, 255, 0.687);
+          font-family: sans-serif;
+          line-height: 2rem;
+        }
+
+        textarea:focus {
+          border: 1px solid rgb(0, 149, 255);
+        }
+      }
+
+      .user-selection {
+        .options {
+          display: flex;
+          gap: 2rem;
+
+          .wrap {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+
+            label {
+              font-size: 1.3rem;
+              font-family: var(--roboto-slab);
+              font-weight: 500;
+              cursor: pointer;
+            }
+          }
+        }
+      }
+
+      .user-number {
+        margin-top: 1rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 1rem;
+        padding: 1rem;
+        width: 12rem;
+        text-decoration: none;
+        font-size: 1.1rem;
+        background-color: rgba(255, 255, 255, 0.163);
+        border-radius: 5px;
+        font-family: sans-serif;
+        font-weight: 500;
+
+        p {
+          display: flex;
+          align-items: center;
+          gap: 0.3rem;
+
+          strong {
+            font-size: 1.5rem;
+          }
+        }
+
+        button {
+          padding: 0rem 0.5rem;
+          font-size: 1.5rem;
+          background-color: rgba(255, 255, 255, 0.136);
+          border: none;
+          outline: none;
+          color: white;
+          border-radius: 0.3rem;
+          cursor: pointer;
+          transition: background-color 0.3s ease-in-out;
+
+          &:hover {
+            background-color: rgba(255, 255, 255, 0.425);
+          }
+
+          &:active {
+            transform: scale(0.9);
+          }
+        }
+      }
+
+      .users {
+        margin-top: 1rem;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+
+        .user {
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+          background-color: rgba(255, 255, 255, 0.155);
+          padding: 0 0.5rem;
+          border-radius: 0.2rem;
+
+          .info {
+            padding: 0.5rem;
+            cursor: pointer;
+
+            p {
+              font-size: 1.5rem;
+            }
+          }
+          button {
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            border: none;
+            outline: none;
+            background-color: rgba(0, 0, 0, 0.264);
+            padding: 0.5rem;
+            border-radius: 0.3rem;
+            transition: all 0.3s ease-in-out;
+
+            &:hover {
+              background-color: rgba(255, 255, 255, 0.188);
+            }
+          }
+        }
+
+        .add-user {
+          cursor: pointer;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          color: white;
+          border: none;
+          outline: none;
+          background-color: rgba(255, 255, 255, 0.176);
+          border-radius: 0.3rem;
+          transition: all 0.3s ease-in-out;
+          font-size: 1.2rem;
+          padding: 0.5rem 2rem;
+
+          &:hover {
+            background-color: rgba(255, 255, 255, 0.362);
+          }
+
+          &:active {
+            background-color: rgba(255, 255, 255, 0.362);
+            transform: scale(0.95);
+          }
+        }
+      }
+    }
+
+    .right {
+      form {
+        .wrap {
+          display: flex;
+          flex-direction: column;
+          margin: 1rem 0;
+        }
+
+        label {
+          font-size: 1.3rem;
+          font-weight: 500;
+          color: rgb(0, 149, 255);
+          font-family: var(--roboto-slab);
+          white-space: nowrap;
+          margin-bottom: 0.3rem;
+        }
+
+        input,
+        textarea {
+          font-size: 1.3rem;
+          padding: 0.8rem;
+          border-radius: 0.3rem;
+          outline: none;
+          border: none;
+          font-family: sans-serif;
+          background-color: rgba(22, 37, 60, 0.992);
+          color: white;
+          resize: vertical;
+
+          &:focus {
+            border: 1px solid rgb(0, 149, 255);
+          }
+        }
+
+        select {
+          font-size: 1.3rem;
+          padding: 0.8rem;
+          border-radius: 0.3rem;
+          outline: none;
+          border: none;
+          font-family: sans-serif;
+          background-color: rgba(22, 37, 60, 0.992);
+          color: white;
+          cursor: pointer;
+          transition: all 0.3s ease-in-out;
+
+          &:hover {
+            background-color: rgba(37, 62, 98, 0.992);
+          }
+
+          &:focus {
+            background-color: rgba(22, 37, 60, 0.992);
+          }
+        }
+
+        .options {
+          display: flex;
+          gap: 1rem;
+          justify-content: center;
+        }
+
+        button {
+          font-size: 1.2rem;
+          font-weight: bold;
+          border-radius: 0.3rem;
+          outline: none;
+          border: none;
+          font-family: sans-serif;
+          color: white;
+          cursor: pointer;
+          transition: all 0.2s ease-in-out;
+          transform: scale(1);
+          margin-top: 1rem;
+          padding: 0.2rem 1.5rem;
+        }
+
+        button.save {
+          background-color: rgb(0, 110, 188);
+
+          &:hover {
+            background-color: rgba(0, 149, 255, 0.636);
+          }
+
+          &:active {
+            background-color: rgb(0, 149, 255, 0.6);
+            transform: scale(0.95);
+          }
+        }
+
+        button.cancel {
+          background-color: rgba(255, 255, 255, 0.332);
+
+          &:hover {
+            background-color: rgba(255, 255, 255, 0.22);
+          }
+
+          &:active {
+            background-color: rgba(255, 255, 255, 0.22);
+            transform: scale(0.95);
+          }
+        }
+      }
+    }
+  }
+
+  .description {
+    margin-top: 3rem;
+    text-align: center;
+    font-size: 1.5rem;
+    margin: 4rem 0;
+    color: rgba(254, 255, 255, 0.688);
+    font-family: sans-serif;
+    font-weight: 600;
+    width: 70%;
+    margin: 4rem auto;
+  }
+
+  button.generate {
+    font-size: 1.2rem;
+    font-weight: bold;
+    border-radius: 0.3rem;
+    outline: none;
+    border: none;
+    font-family: sans-serif;
+    background-color: rgb(0, 110, 188);
+    color: white;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    transform: scale(1);
+    width: 10rem;
+    height: 3rem;
+    margin-top: 2rem;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+
+    &:hover {
+      background-color: rgba(0, 149, 255, 0.636);
+    }
+
+    &:active {
+      background-color: rgb(0, 149, 255, 0.6);
+      transform: scale(0.95) translateX(-50%);
+    }
+  }
+
+  .checking-result {
+    margin: 3rem 0;
+
+    .dialogue-text {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+
+      .dialogue {
+        width: 55rem;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+
+        .heading {
+          display: flex;
+
+          .name {
+            font-size: 1.5rem;
+            font-weight: bold;
+            font-family: sans-serif;
+            color: rgba(255, 255, 255, 0.795);
+          }
+        }
+
+        .content {
+          margin-top: 0;
+          font-size: 1.3rem;
+          // TODO: find better font. the same font used in paragraph content.
+          margin-left: 0.5rem;
+          color: rgba(255, 255, 255, 0.669);
+        }
+      }
+    }
+  }
+}

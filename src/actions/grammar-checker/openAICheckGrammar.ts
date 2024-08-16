@@ -16,15 +16,19 @@ export async function openAICheckGrammar(
 
   let response;
 
+  console.log("Checking grammar: ", text);
+
   if (openAIfetch === "true") {
-    const completion = await openAI.createChatCompletion({
+    const completion = await openAI.chat.completions.create({
+      // TODO: use the latest api
       model: process.env.OPENAI_MODEL || "gpt-3.5-turbo",
+      // @ts-ignore
       messages,
       functions,
       function_call: { name: "check_grammar" },
     });
 
-    const functionCall = completion.data.choices[0].message?.function_call;
+    const functionCall = completion.choices[0].message?.function_call;
 
     console.log("Response: ", functionCall);
 

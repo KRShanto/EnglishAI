@@ -14,12 +14,13 @@ export async function openAIAlternativeGrammar(
   let response;
 
   if (openAIfetch === "true") {
-    const completion = await openAI.createChatCompletion({
+    const completion = await openAI.chat.completions.create({
       model: process.env.OPENAI_MODEL || "gpt-3.5-turbo",
+      // @ts-ignore
       messages,
     });
 
-    response = completion.data.choices[0].message?.content || "";
+    response = completion.choices[0].message?.content || "";
   } else {
     response = "My name is Shanto";
   }

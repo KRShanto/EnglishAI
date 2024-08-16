@@ -1,6 +1,4 @@
-import { ChatCompletionFunctions } from "openai";
-
-export const functions: ChatCompletionFunctions[] = [
+export const functions = [
   {
     name: "check_grammar",
     description: "English Grammar checker. Whether the text is correct or not",
@@ -41,7 +39,7 @@ export const functions: ChatCompletionFunctions[] = [
           },
         },
       },
-      reqired: ["text", "result", "isCorrect", "correctText", "wrongText"],
+      required: ["text", "result", "isCorrect", "correctText", "wrongText"],
     },
   },
 ];
